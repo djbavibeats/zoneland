@@ -12,12 +12,18 @@ app.use(cors())
 app.use(express.json({ limit: '50mb' }))
 
 // Set up Shopify API Credentials
-const shopify_api_base_url = process.env.EIGHTHUNDRED_SHOPIFY_API_BASE_URL
-const shopify_api_key = process.env.EIGHTHUNDRED_SHOPIFY_API_KEY
-const shopify_api_secret_key = process.env.EIGHTHUNDRED_SHOPIFY_API_SECRET_KEY
-const shopify_admin_api_access_token = process.env.EIGHTHUNDRED_SHOPIFY_ADMIN_API_ACCESS_TOKEN
-const shopify_storefront_api_access_token = process.env.SHOPIFY_STOREFRONT_API_ACCESS_TOKEN
+// const shopify_api_base_url = process.env.EIGHTHUNDRED_SHOPIFY_API_BASE_URL
+// const shopify_api_key = process.env.EIGHTHUNDRED_SHOPIFY_API_KEY
+// const shopify_api_secret_key = process.env.EIGHTHUNDRED_SHOPIFY_API_SECRET_KEY
+// const shopify_admin_api_access_token = process.env.EIGHTHUNDRED_SHOPIFY_ADMIN_API_ACCESS_TOKEN
+// const shopify_storefront_api_access_token = process.env.SHOPIFY_STOREFRONT_API_ACCESS_TOKEN
 
+// 
+const shopify_api_base_url = process.env.SHOPIFY_API_BASE_URL
+const shopify_api_key = process.env.SHOPIFY_API_KEY
+const shopify_api_secret_key = process.env.SHOPIFY_API_SECRET_KEY
+const shopify_admin_api_access_token = process.env.SHOPIFY_ADMIN_API_ACCESS_TOKEN
+const shopify_storefront_api_access_token = process.env.SHOPIFY_STOREFRONT_API_ACCESS_TOKEN
 
 app.get('/api', (req, res) => {
     res.json({ 
