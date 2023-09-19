@@ -25,13 +25,13 @@ const shopify_api_secret_key = process.env.SHOPIFY_API_SECRET_KEY
 const shopify_admin_api_access_token = process.env.SHOPIFY_ADMIN_API_ACCESS_TOKEN
 const shopify_storefront_api_access_token = process.env.SHOPIFY_STOREFRONT_API_ACCESS_TOKEN
 
-app.get('/api', (req, res) => {
+app.post('/api', (req, res) => {
     res.json({ 
         message: 'hi from the server!'
     })
 })
 
-app.get('/shopify/blogs/get-all-blogs', (req, res) => {
+app.post('/shopify/blogs/get-all-blogs', (req, res) => {
     fetch(shopify_api_base_url + '/blogs.json', {
         method: 'GET',
         headers: {
@@ -106,7 +106,7 @@ app.post('/shopify/blogs/create-article', async (req, res) => {
 
 })
 
-app.get('/shopify/blogs/get-articles', async (req, res) => {
+app.post('/shopify/blogs/get-articles', async (req, res) => {
     const response = await fetch(shopify_api_base_url + '/blogs/' + id + '/articles.json', {
         method: "GET",
         headers: {

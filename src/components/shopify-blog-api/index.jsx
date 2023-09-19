@@ -136,7 +136,7 @@ export default function ShopifyBlogApi() {
     const createBlogPosts = async () => {
         setAwaitingResponse(true)
         try {
-            fetch("http://localhost:5000/shopify/blogs/create-article", {
+            fetch("/shopify/blogs/create-article", {
                 method: "POST",
                 body: JSON.stringify({
                     articles: postsData,
@@ -158,7 +158,7 @@ export default function ShopifyBlogApi() {
     const getWordpressPosts = async () => {
         setFetchingPosts(true)
         try {
-            fetch("http://localhost:5000/wordpress/blogs/get-all-posts", {
+            fetch("/wordpress/blogs/get-all-posts", {
                 method: "POST",
                 body: JSON.stringify({
                     url: wordpressUrl
