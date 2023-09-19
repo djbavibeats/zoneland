@@ -46,6 +46,12 @@ app.post('/shopify/blogs/get-all-blogs', (req, res) => {
             "blogs": data.blogs
         })
     })
+    .catch(err => {
+        res.send({
+            "message": "error",
+            "error": err
+        })
+    })
 })
 
 function waitforme(millisec) {
