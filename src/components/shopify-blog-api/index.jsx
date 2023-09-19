@@ -80,7 +80,7 @@ export default function ShopifyBlogApi() {
     // Step One
     useEffect(() => {
         try {
-            fetch("http://localhost:5000/shopify/blogs/get-all-blogs", {
+            fetch("/shopify/blogs/get-all-blogs", {
                 method: "GET"
             })
             .then(res => res.json())
