@@ -81,7 +81,7 @@ export default function ShopifyBlogApi() {
     useEffect(() => {
         try {
             fetch("/shopify/blogs/get-all-blogs", {
-                method: "GET"
+                method: "POST"
             })
             .then(res => res.json())
             .then(data => {
