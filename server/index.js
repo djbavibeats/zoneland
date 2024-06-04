@@ -3,9 +3,10 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
+
 dotenv.config()
 
-const PORT = 5000
+const PORT = 8080
 
 const app = express()
 app.use(cors())
@@ -32,6 +33,7 @@ app.post('/api', (req, res) => {
 })
 
 app.post('/shopify/blogs/get-all-blogs', (req, res) => {
+    console.log('okayyy')
     fetch(shopify_api_base_url + '/blogs.json', {
         method: 'GET',
         headers: {
@@ -203,6 +205,9 @@ app.post('/wordpress/blogs/get-all-posts', async (req, res) => {
     }
 })
 
-app.listen(PORT, () => {
-    console.log(`server up and running on port ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`server up and running on port ${PORT}`)
+// })
+
+
+export const handler = app;
