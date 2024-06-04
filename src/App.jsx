@@ -1,5 +1,5 @@
 import { Link, Route } from 'wouter'
-
+import 'vite/modulepreload-polyfill'
 // Components
 import Home from './components/home'
 import ShopifyBlogApi from './components/shopify-blog-api'
