@@ -17,8 +17,5 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    mix({
-      handler: './server/index.js',
-      adapter: nodeAdapter()
-    })],
+  ]
 })
