@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "server": "nodemon server",
     "client": "vite",
-    "dev": "run-p server client"
+    "dev": "vite"
   },
   "author": "",
   "license": "ISC",

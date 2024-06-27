@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Papa from 'papaparse'
 
+const API_KEY = import.meta.env.VITE_MY_API_KEY
+const baseUrl = import.meta.env.VITE_SERVER_URL
+
 const BlogPostPreview = ({ post }) => {
     const [ showContent, setShowContent ] = useState(false)
     console.log(post)
@@ -80,7 +83,7 @@ export default function ShopifyBlogApi() {
     // Step One
     useEffect(() => {
         try {
-            fetch("/shopify/blogs/get-all-blogs", {
+            fetch(baseUrl + `/shopify/blogs/get-all-blogs`, {
                 method: "POST"
             })
             .then(res => res.json())
@@ -136,14 +139,15 @@ export default function ShopifyBlogApi() {
     const createBlogPosts = async () => {
         setAwaitingResponse(true)
         try {
-            fetch("/shopify/blogs/create-article", {
+            fetch(baseUrl + `/shopify/blogs/create-article`, {
                 method: "POST",
                 body: JSON.stringify({
                     articles: postsData,
                     blog: selectedBlog
                 }),
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "api_key": API_KEY
                 }
             })
                 .then(res => res.json())
@@ -158,19 +162,25 @@ export default function ShopifyBlogApi() {
     const getWordpressPosts = async () => {
         setFetchingPosts(true)
         try {
-            fetch("/wordpress/blogs/get-all-posts", {
+            fetch(baseUrl + `/wordpress/blogs/get-all-posts`, {
                 method: "POST",
                 body: JSON.stringify({
                     url: wordpressUrl
                 }),
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "api_key": API_KEY
                 }
             })
                 .then(res => res.json())
                 .then(data => {
-                    setFetchingPosts(false)
-                    setPostsData(data.posts)
+                    console.log(data)
+                    if (data.status === 403) {
+                        alert("unauthorized url")
+                    } else if (data.status === 200) {
+                        setFetchingPosts(false)
+                        setPostsData(data.posts)
+                    }
                 })
         } catch (err) {
             console.log(err)
